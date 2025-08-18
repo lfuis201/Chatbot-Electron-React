@@ -1,4 +1,4 @@
-import { JSX } from "react";
+import { JSX } from 'react'
 
 export default function Chatbot(): JSX.Element {
   return (
@@ -6,5 +6,5 @@ export default function Chatbot(): JSX.Element {
       <h1 className="text-3xl font-bold mb-4">🤖 Chatbot Dragon Ball</h1>
       <p className="mb-4">Aquí iría tu asistente para crear cartas.</p>
     </div>
-  );
+  )
 }
