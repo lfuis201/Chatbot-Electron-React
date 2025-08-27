@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import ChatbotPage from "../features/chatbot/pages/chatbot";
-import GalleryPage from "../features/chatbotGallery/pages/chatbotGallery";
+import ChatbotPage from "../features/chatbot/pages/ChatbotPage";
+import GalleryPage from "../features/chatbotGallery/pages/GalleryPage";
 import { JSX } from "react";
 import MainLayout from "@renderer/shared/layouts/MainLayout/MainLayout";
 

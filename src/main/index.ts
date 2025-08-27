@@ -2,6 +2,19 @@ import { app, shell, BrowserWindow, ipcMain } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
+import Store from 'electron-store'
+
+// 🗂️ Configuración del Store
+type Schema = {
+  gallery: string[]
+}
+
+const store = new Store<Schema>({
+  name: 'settings', // archivo: settings.json en userData
+  defaults: {
+    gallery: []
+  }
+})
 
 function createWindow(): void {
   // Create the browser window.
@@ -47,6 +60,20 @@ app.whenReady().then(() => {
   // see https://github.com/alex8088/electron-toolkit/tree/master/packages/utils
   app.on('browser-window-created', (_, window) => {
     optimizer.watchWindowShortcuts(window)
+  })
+  ipcMain.handle('gallery:get', () => {
+    return store.get('gallery')
+  })
+
+  ipcMain.handle('gallery:add', (_, image: string) => {
+    const current = store.get('gallery') || []
+    const updated = [...current, image]
+    store.set('gallery', updated)
+    return updated
+  })
+
+  ipcMain.handle('gallery:clear', () => {
+    store.set('gallery', [])
   })
 
   // IPC test
