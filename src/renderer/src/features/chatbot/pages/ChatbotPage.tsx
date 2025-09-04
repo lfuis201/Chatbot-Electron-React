@@ -117,8 +117,8 @@ export default function ChatbotPage() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center p-4">
-      <Card className="w-full max-w-lg h-[600px] flex flex-col">
+    <div className="flex flex-col items-center justify-center h-full w-full p-6">
+  <Card className="w-full max-w-lg flex flex-col flex-1 h-full">
         <CardBody className="flex flex-col flex-1 p-0">
           <ChatMessages messages={messages} />
           <ChatInput onSend={handleSendMessage} />
